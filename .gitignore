@@ -1,0 +1,23 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+openremote/node_modules
+openremote/.pnp
+openremote/.pnp.js
+
+# testing
+openremote/coverage
+
+# production
+openremote/build
+
+# misc
+openremote/.DS_Store
+openremote/.env.local
+openremote/.env.development.local
+openremote/.env.test.local
+openremote/.env.production.local
+
+openremote/npm-debug.log*
+openremote/yarn-debug.log*
+openremote/yarn-error.log*
