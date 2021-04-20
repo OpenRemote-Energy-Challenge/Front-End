@@ -100,7 +100,7 @@ class App extends Component {
                         <Sidenav
                             expanded={expand}
                             defaultOpenKeys={['3']}
-                            appearance="subtle"
+                            activeKey="1"
                         >
                             <Navigation />
                         </Sidenav>
