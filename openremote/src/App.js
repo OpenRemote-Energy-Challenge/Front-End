@@ -109,7 +109,15 @@ class App extends Component {
 
                     <Container className="container-content">
                         <Header>
-                            <h2>Page Title</h2>
+                            <Switch>
+                                <Route exact path={["/", "/home"]}><h2>Dashboard</h2></Route>
+                                <Route exact path={["/analytics"]}><h2>Analytics</h2></Route>
+                                <Route exact path={["/users"]}><h2>Users</h2></Route>
+                                <Route exact path={["/permissions"]}><h2>Permissions</h2></Route>
+                                <Route exact path={["/data"]}><h2>Data</h2></Route>
+                                <Route exact path={["/login"]}><h2>Login</h2></Route>
+                                <Route exact path={["/profile"]}><h2>Profile</h2></Route>
+                            </Switch>
                         </Header>
                         <Divider />
                         <Content>
