@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Container, Header, Content, Footer, Sidebar, Sidenav, Icon, Nav, Dropdown, Navbar} from 'rsuite';
+import {Container, Header, Content, Footer, Sidebar, Sidenav, Icon, Nav, Dropdown, Navbar, Divider } from 'rsuite';
 import { Switch, Route, Router } from "react-router-dom";
 
 // CSS
@@ -84,10 +84,10 @@ class App extends Component {
     render() {
         const { expand } = this.state;
         return (
-            <div className="show-fake-browser sidebar-page">
+            <div id="app">
                 <Container>
                     <Sidebar
-                        style={{ display: 'flex', flexDirection: 'column' }}
+                        style={{ display: 'flex', flexDirection: 'column', backgroundColor: '#1A1D24' }}
                         width={expand ? 260 : 56}
                         collapsible
                     >
@@ -107,21 +107,24 @@ class App extends Component {
                         <NavToggle expand={expand} onChange={this.handleToggle} />
                     </Sidebar>
 
-                    <Container>
+                    <Container className="container-content">
                         <Header>
                             <h2>Page Title</h2>
                         </Header>
+                        <Divider />
                         <Content>
-                            <Switch>
-                                <Route exact path={["/", "/home"]} component={Dashboard} />
-                                <Route exact path={["/analytics"]} component={Analytics} />
-                                <Route exact path={["/users"]} component={Users} />
-                                <Route exact path={["/permissions"]} component={Permissions} />
-                                <Route exact path={["/data"]} component={Data} />
-                                <Route exact path={["/login"]} component={Login} />
-                                <Route exact path={["/profile"]} component={Profile} />
-                                <Route component={NotFound} />
-                            </Switch>
+                            <div className="content-inner">
+                                <Switch>
+                                    <Route exact path={["/", "/home"]} component={Dashboard} />
+                                    <Route exact path={["/analytics"]} component={Analytics} />
+                                    <Route exact path={["/users"]} component={Users} />
+                                    <Route exact path={["/permissions"]} component={Permissions} />
+                                    <Route exact path={["/data"]} component={Data} />
+                                    <Route exact path={["/login"]} component={Login} />
+                                    <Route exact path={["/profile"]} component={Profile} />
+                                    <Route component={NotFound} />
+                                </Switch>
+                            </div>
                         </Content>
                         <Footer style={{textAlign: 'center'}}>Footer</Footer>
                     </Container>

@@ -1,0 +1,26 @@
+.rs-container {
+    height: 100% !important;
+}
+
+.container-content {
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+
+.rs-content {
+    background-color: #1A1D24;
+    border-radius: 6px;
+}
+
+.rs-footer {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+.rs-content .content-inner {
+    margin: 0.6rem 1rem 0.6rem 1rem;
+}
+
+.nav-toggle {
+    margin-top: auto;
+}
