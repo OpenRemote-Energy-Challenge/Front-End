@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Placeholder } from 'rsuite';
 
 export default class DataComponent extends Component {
     constructor(props) {
@@ -27,7 +28,7 @@ export default class DataComponent extends Component {
     render() {
         return (
             <div>
-                <p>This is the Data page</p>
+                <Placeholder.Grid rows={10} columns={6} active />
             </div>
         )
     }

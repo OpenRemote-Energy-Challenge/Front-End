@@ -75,7 +75,11 @@ export default class NavbarComponent extends Component {
                             ) : null}
                             {currentUser ? (
                                 <Dropdown eventKey="5" title={currentUser.username} icon={<Icon icon="avatar" />} >
-                                    <Dropdown.Item eventKey="5-1" >Profile</Dropdown.Item>
+                                    <Link to="/profile"  >
+                                        <Dropdown.Item eventKey="5-1" >
+                                            Profile
+                                        </Dropdown.Item>
+                                    </Link>
                                     <Dropdown.Item eventKey="5-2">Log-out <Icon icon="exit" /></Dropdown.Item>
                                 </Dropdown>
                             ) : (

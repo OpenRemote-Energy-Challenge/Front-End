@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Placeholder } from 'rsuite';
 
 export default class ProfileComponent extends Component {
     constructor(props) {
@@ -25,9 +26,10 @@ export default class ProfileComponent extends Component {
     }
 
     render() {
+        const { Paragraph } = Placeholder;
         return (
             <div>
-                <p>This is the Profile page</p>
+                <Paragraph style={{ marginTop: 30 }} rows={5} graph="image" active />
             </div>
         )
     }
