@@ -81,7 +81,9 @@ export default class DashboardComponent extends Component {
             <div>
                 <h1>Welcome back</h1>
                 <h3>Today is {day} {currentDate.getDate()} {month} {currentDate.getFullYear()}</h3>
-                <MainGraph/>
+                <div>
+                    <MainGraph/>
+                </div>
             </div>
         )
 

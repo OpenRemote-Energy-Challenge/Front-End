@@ -1,6 +1,8 @@
 import Chart from "chart.js/auto"
 import React from "react";
 
+import '../../../styles/powergraph.component.css';
+
 var myChart;
 
 const MainGraph = () => {
@@ -41,7 +43,9 @@ const MainGraph = () => {
     });
 
     return(
+        <div className="chart-container">
             <canvas id={"maingraph"}></canvas>
+        </div>
     )
 
 }

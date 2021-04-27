@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Placeholder } from 'rsuite';
 
 export default class AnalyticsComponent extends Component {
     constructor(props) {
@@ -27,7 +28,7 @@ export default class AnalyticsComponent extends Component {
     render() {
         return (
             <div>
-                <p>This is the analytics page</p>
+                <Placeholder.Graph active />
             </div>
         )
     }
