@@ -14,7 +14,7 @@ const MainGraph = () => {
     }
 
     myChart = new Chart(ctx, {
-        type: 'doughnut',
+        type: 'line',
         data: {
             labels: ['Power Generated Today (kW)', 'Power Used Today (kW)', 'Estimated Time Left (H)'],
             datasets: [{
