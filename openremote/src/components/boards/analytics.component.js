@@ -1,9 +1,13 @@
 import React, { Component } from "react";
-import { Placeholder } from 'rsuite';
+import {Button, Placeholder} from 'rsuite';
+import Library from '../../lib/arraySplit.lib';
+import SolarDataService from '../../services/solar/data.service';
+import Data from '../../getData.json';
 
 export default class AnalyticsComponent extends Component {
     constructor(props) {
         super(props);
+        this.sortData = this.sortData.bind(this);
 
         this.state = {
             user: null,
@@ -25,10 +29,21 @@ export default class AnalyticsComponent extends Component {
         });
     }
 
+    sortData() {
+        let data = Library.sortArrayByItem(Data);
+        console.log(data)
+        // SolarDataService.getAll()
+        //     .then(res => {
+        //         let data = Library.sortArrayByItem(res.data);
+        //         console.log(data);
+        //     })
+    }
+
     render() {
         return (
             <div>
                 <Placeholder.Graph active />
+                <Button onClick={this.sortData}>Click me</Button>
             </div>
         )
     }

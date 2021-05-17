@@ -1,9 +1,16 @@
 const _ = require('lodash');
 
-class arraySplitLib {
-    sortArrayByItem(array) {
+module.exports = {
+    sortArrayByItem: (array) => {
+        console.log('Sort has been called')
         return _.values(_.groupBy(array, 'name'));
     }
 }
-
-module.exports = arraySplitLib;
+//
+// class arraySplitLib {
+//     sortArrayByItem(array) {
+//
+//     }
+// }
+//
+// module.exports = new arraySplitLib();
