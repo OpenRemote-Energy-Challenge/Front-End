@@ -18,7 +18,7 @@ const MainGraph = () => {
         data: {
             labels: ['Power Generated Today (kW)', 'Power Used Today (kW)', 'Estimated Time Left (H)'],
             datasets: [{
-                label: '# of Votes',
+                label: 'Solar Power Details',
                 data: [20, 10, 12],
                 backgroundColor: [
                     'rgba(255, 99, 132, 0.2)',
