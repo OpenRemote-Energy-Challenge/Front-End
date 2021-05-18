@@ -11,8 +11,10 @@ var myChart;
 const MainGraph = () => {
     let ctx = document.getElementById("maingraph");
     let data = Library.sortArrayByItem(Data);
-    let graphData = Extract.extractData(data[1]);
-    console.log(graphData)
+    let graphDataY = Extract.extractData(data[1]);
+    let graphDataX = Extract.extractDataX(data[1]);
+    //console.log(data);
+    console.log(graphDataY);
 
     if(myChart)
     {
@@ -22,28 +24,25 @@ const MainGraph = () => {
     myChart = new Chart(ctx, {
         type: 'line',
         data: {
-            labels: ['Power', 'Energy'],
+            labels: graphDataX,
             datasets: [{
-                label: 'Solar Power Details',
-                data: graphData,
-                backgroundColor: [
-                    'rgba(255, 99, 132, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(255, 206, 86, 0.2)'
-                ],
-                borderColor: [
-                    'rgba(255, 99, 132, 1)',
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 206, 86, 1)'
-                ],
+                label: 'Tamar Building Solar Power Produced',
+                data: graphDataY,
+                backgroundColor: ['rgba(255, 99, 132, 0.2)', 'rgba(54, 162, 235, 0.2)', 'rgba(255, 206, 86, 0.2)'],
+                borderColor: ['rgba(255, 99, 132, 1)', 'rgba(54, 162, 235, 1)', 'rgba(255, 206, 86, 1)'],
                 borderWidth: 1
             }]
         },
         options: {
+            responsive: true,
             scales: {
-                y: {
+                y: [{
+                    title: {
+                        display: true,
+                        text: "Power Produced"
+                    },
                     beginAtZero: true
-                }
+                }]
             }
         }
     });
