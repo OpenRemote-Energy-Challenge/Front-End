@@ -2,11 +2,17 @@ import Chart from "chart.js/auto"
 import React from "react";
 
 import '../../../styles/powergraph.component.css';
+import Data from '../../../getData.json';
+import Library from "../../../lib/arraySplit.lib";
+import Extract from '../../../lib/extractData';
 
 var myChart;
 
 const MainGraph = () => {
     let ctx = document.getElementById("maingraph");
+    let data = Library.sortArrayByItem(Data);
+    let graphData = Extract.extractData(data[1]);
+    console.log(graphData)
 
     if(myChart)
     {
@@ -16,10 +22,10 @@ const MainGraph = () => {
     myChart = new Chart(ctx, {
         type: 'line',
         data: {
-            labels: ['Power Generated Today (kW)', 'Power Used Today (kW)', 'Estimated Time Left (H)'],
+            labels: ['Power', 'Energy'],
             datasets: [{
                 label: 'Solar Power Details',
-                data: [20, 10, 12],
+                data: graphData,
                 backgroundColor: [
                     'rgba(255, 99, 132, 0.2)',
                     'rgba(54, 162, 235, 0.2)',
