@@ -10,6 +10,21 @@ var myChart;
 var graphDataY = [];
 var graphDataX = [];
 
+function formatDate(date){
+    let myDate = new Date(date);
+    let year = myDate.getFullYear();
+    let month =  ''+myDate.getMonth();
+    let day = ''+myDate.getDate();
+
+    if(month.length < 2){
+        month = '0'+month;
+    }
+    if(day.length < 2){
+        day = '0'+day;
+    }
+    return year + '-' + month + '-' + day;
+}
+
 const MainGraph = () => {
     let ctx = document.getElementById("maingraph");
     let data = Library.sortArrayByItem(Data);
@@ -22,7 +37,7 @@ const MainGraph = () => {
         let date = new Date(data[1][i]['timestamp'].slice(0, 10));
 
         if(date.getMonth() === 2){
-            graphDataX.push(date);
+            graphDataX.push(formatDate(date));
             let value = data[1][i]['value'];
             graphDataY.push(value);
         }
