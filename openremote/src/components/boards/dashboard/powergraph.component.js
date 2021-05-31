@@ -7,14 +7,26 @@ import Library from "../../../lib/arraySplit.lib";
 import Extract from '../../../lib/extractData';
 
 var myChart;
+var graphDataY = [];
+var graphDataX = [];
 
 const MainGraph = () => {
     let ctx = document.getElementById("maingraph");
     let data = Library.sortArrayByItem(Data);
-    let graphDataY = Extract.extractData(data[1]);
-    let graphDataX = Extract.extractDataX(data[1]);
-    //console.log(data);
-    console.log(graphDataY);
+    //let graphDataY = Extract.extractData(data[1]);
+    //let graphDataX = Extract.extractDataX(data[1]);
+
+    console.log(data[1].length)
+
+    for(var i = 0; i < 500; i++){
+        let date = new Date(data[1][i]['timestamp'].slice(0, 10));
+
+        if(date.getMonth() === 2){
+            graphDataX.push(date);
+            let value = data[1][i]['value'];
+            graphDataY.push(value);
+        }
+    }
 
     if(myChart)
     {
