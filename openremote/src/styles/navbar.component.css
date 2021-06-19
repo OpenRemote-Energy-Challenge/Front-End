@@ -1,0 +1,23 @@
+.rs-nav a {
+    text-decoration: none;
+}
+
+.rs-nav a:hover {
+    text-decoration: none;
+}
+
+.rs-dropdown-item-content a {
+    color: #a4a9b3 !important;
+}
+
+.rs-dropdown-item-content {
+    color: #a4a9b3 !important;
+}
+
+.rs-dropdown-menu a:hover {
+    background-color: #292d33 !important;
+}
+
+.rs-sidenav-default.rs-sidenav-collapse-in .rs-dropdown-menu > li > .rs-dropdown-item-content:hover, .rs-sidenav-default.rs-sidenav-collapsing .rs-dropdown-menu > li > .rs-dropdown-item-content:hover, .rs-sidenav-default.rs-sidenav-collapse-in .rs-dropdown-item-content > .rs-dropdown-menu-toggle:hover, .rs-sidenav-default.rs-sidenav-collapsing .rs-dropdown-item-content > .rs-dropdown-menu-toggle:hover, .rs-sidenav-default.rs-sidenav-collapse-in .rs-dropdown-menu > li > .rs-dropdown-item-content:focus, .rs-sidenav-default.rs-sidenav-collapsing .rs-dropdown-menu > li > .rs-dropdown-item-content:focus, .rs-sidenav-default.rs-sidenav-collapse-in .rs-dropdown-item-content > .rs-dropdown-menu-toggle:focus, .rs-sidenav-default.rs-sidenav-collapsing .rs-dropdown-item-content > .rs-dropdown-menu-toggle:focus {
+
+}

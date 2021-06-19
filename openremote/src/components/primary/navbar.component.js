@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import {Sidenav, Nav, Icon, Dropdown, Button} from 'rsuite';
 import {Link} from "react-router-dom";
 
+// CSS
+import '../../styles/navbar.component.css';
+
 export default class NavbarComponent extends Component {
     constructor(props) {
         super(props);
@@ -51,13 +54,26 @@ export default class NavbarComponent extends Component {
 
                             {showAdminBoard ? (
                                 <Dropdown eventKey="4" title="Settings" icon={<Icon icon="gear-circle" />} >
-                                    <Dropdown.Item eventKey="4-1">Permissions</Dropdown.Item>
-                                    <Dropdown.Item eventKey="4-2">Data</Dropdown.Item>
+                                    <Link to="/permissions"  >
+                                        <Dropdown.Item eventKey="4-1">
+                                            Permissions
+                                        </Dropdown.Item>
+                                    </Link>
+
+                                    <Link to="/data" >
+                                        <Dropdown.Item eventKey="4-2">
+                                            Data
+                                        </Dropdown.Item>
+                                    </Link>
                                 </Dropdown>
                             ) : null}
                             {currentUser ? (
                                 <Dropdown eventKey="5" title={currentUser.username} icon={<Icon icon="avatar" />} >
-                                    <Dropdown.Item eventKey="5-1" >Profile</Dropdown.Item>
+                                    <Link to="/profile"  >
+                                        <Dropdown.Item eventKey="5-1" >
+                                            Profile
+                                        </Dropdown.Item>
+                                    </Link>
                                     <Dropdown.Item eventKey="5-2">Log-out <Icon icon="exit" /></Dropdown.Item>
                                 </Dropdown>
                             ) : (
