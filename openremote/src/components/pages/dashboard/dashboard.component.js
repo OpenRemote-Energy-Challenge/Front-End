@@ -50,7 +50,7 @@ export default class DashboardComponent extends Component {
                         <Content>
                             <div className="content-inner">
                                 {loading ? (
-                                    <Placeholder.Paragraph rows={18} active>
+                                    <Placeholder.Paragraph rows={10} active>
                                         <Loader backdrop content="loading..." vertical />
                                     </Placeholder.Paragraph>
                                 ) : (
