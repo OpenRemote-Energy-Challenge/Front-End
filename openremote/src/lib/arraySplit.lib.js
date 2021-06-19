@@ -6,11 +6,3 @@ module.exports = {
         return _.values(_.groupBy(array, 'name'));
     }
 }
-//
-// class arraySplitLib {
-//     sortArrayByItem(array) {
-//
-//     }
-// }
-//
-// module.exports = new arraySplitLib();
