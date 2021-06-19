@@ -13,10 +13,13 @@ export default class BuildingComponent extends Component {
         super(props);
 
         this.state = {
-            user: undefined,
+            user: {
+                username: "Someone",
+                id: "12121212",
+                isAdmin: true,
+            },
             isAdmin: false,
             building: props.match.params.building,
-            loading: true
         }
     }
 
@@ -35,7 +38,7 @@ export default class BuildingComponent extends Component {
     }
 
     render() {
-        const { user, building, loading } = this.state;
+        const { user, building } = this.state;
         if (user) {
             return (
                 <>
@@ -52,11 +55,7 @@ export default class BuildingComponent extends Component {
                             <Divider />
                             <Content>
                                 <div className="content-inner">
-                                    {loading ? (
-                                        <Placeholder.Grid rows={5} columns={6} active />
-                                    ) : (
-                                        <DataComponent building={building} />
-                                    )}
+                                    <DataComponent building={building} />
                                 </div>
                             </Content>
                             <FooterComponent />

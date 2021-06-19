@@ -1,6 +1,9 @@
 import React from 'react';
 import {Button, Col, FlexboxGrid} from "rsuite";
 
+// Styles
+import '../../../../../styles/components/buildings/building.component.css';
+
 export default class BuildingComponent extends React.PureComponent {
     render() {
         const { building, key, ...props } = this.props;

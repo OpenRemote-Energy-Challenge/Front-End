@@ -3,7 +3,7 @@ import { Redirect } from 'react-router-dom';
 
 // Components
 import SidebarComponent from "../../global/navigation/sidebar/sidebar.component";
-import {Container, Content, Divider, Header, Loader, Placeholder} from "rsuite";
+import {Container, Content, Divider, Header} from "rsuite";
 import FooterComponent from "../../global/footer/footer.component";
 import BuildingsComponent from "./blocks/buildings.component";
 import {Helmet} from "react-helmet";
@@ -18,8 +18,7 @@ export default class AnalyticsComponent extends Component {
                 id: "12121212",
                 isAdmin: true,
             },
-            isAdmin: false,
-            loading: true
+            isAdmin: false
         }
     }
 
@@ -38,7 +37,7 @@ export default class AnalyticsComponent extends Component {
     }
 
     render() {
-        const { user, loading } = this.state;
+        const { user } = this.state;
         if (user) {
             return (
                 <>
@@ -55,11 +54,7 @@ export default class AnalyticsComponent extends Component {
                             <Divider />
                             <Content>
                                 <div className="content-inner">
-                                    {loading ? (
-                                        <Placeholder.Graph active />
-                                    ) : (
-                                        <BuildingsComponent />
-                                    )}
+                                    <BuildingsComponent />
                                 </div>
                             </Content>
                             <FooterComponent />

@@ -1,0 +1,73 @@
+.building-item {
+    display: block;
+    background-color: #1A1D24;
+    box-shadow: 0 4px 10px 5px rgba(0, 0, 0, .3);
+    border-radius: 10px;
+    max-width: 25rem;
+    width: 15rem;
+    margin: 0.5rem;
+    padding: 2rem;
+    min-height: 8rem;
+    text-align: left;
+}
+
+.building-item h4 {
+    margin-bottom: 1rem;
+}
+
+.building-item .rs-btn {
+    margin-top: 1.2rem;
+}
+
+.building-item:hover {
+    box-shadow: 0 4px 10px 8px rgba(0, 0, 0, .3);
+}
+
+/* Extra Large Devices */
+@media (min-width: 1200px) {
+    .building-item {
+        width: 30rem;
+        margin-bottom: 2rem;
+        margin-left: 0.9rem;
+        margin-right: 0.9rem;
+    }
+}
+
+/* Large devices (desktops, less than 1200px) */
+@media (min-width: 992px) and (max-width: 1199.98px) {
+    .building-item {
+        width: 25rem;
+        margin-bottom: 2rem;
+        margin-left: 0.9rem;
+        margin-right: 0.9rem;
+    }
+}
+
+/* Medium devices (tablets, less than 992px) */
+@media (min-width: 768px) and (max-width: 991.98px) {
+    .building-item {
+        width: 22rem;
+        margin-bottom: 2rem;
+        margin-left: 1rem;
+        margin-right: 1rem;
+    }
+}
+
+/* Small Devices */
+@media (max-width: 767.98px) {
+    .building-item {
+        width: 15rem;
+        margin-bottom: 1.5rem;
+        margin-left: 0.6rem;
+        margin-right: 0.6rem;
+    }
+}
+
+/* Extra small devices (portrait phones, less than 576px) */
+@media (max-width: 575.98px) {
+    .building-item {
+        width: 13rem;
+        margin-left: 0.5rem;
+        margin-right: 0.5rem;
+    }
+}

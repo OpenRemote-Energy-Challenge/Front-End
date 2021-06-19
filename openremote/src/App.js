@@ -51,12 +51,11 @@ class App extends Component {
                         <Route exact path={["/", "/home", "/dashboard"]} component={DashboardComponent} />
                         <Route exact path={["/analytics"]} component={AnalyticsComponent} />
                         <Route exact path={["/users"]} component={UsersComponent} />
-                        <Route exact path={["/builder/:building"]} component={BuildingComponent} />
+                        <Route exact path={["/building/:building"]} component={BuildingComponent} />
                         <Route exact path={["/profile", "/login"]} component={UserComponent} />
                         <Route component={NotfoundComponent} />
                     </Switch>
                 </BrowserRouter>
-
             );
         } else {
             return (
