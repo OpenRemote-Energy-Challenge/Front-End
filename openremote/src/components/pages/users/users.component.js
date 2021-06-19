@@ -3,7 +3,7 @@ import { Redirect } from 'react-router-dom';
 
 // Components
 import SidebarComponent from "../../global/navigation/sidebar/sidebar.component";
-import {Container, Content, Divider, Header} from "rsuite";
+import {Container, Content, Divider, Header, Placeholder} from "rsuite";
 import FooterComponent from "../../global/footer/footer.component";
 import {Helmet} from "react-helmet";
 
@@ -17,7 +17,8 @@ export default class UsersComponent extends Component {
                 id: "12121212",
                 isAdmin: true,
             },
-            isAdmin: false
+            isAdmin: false,
+            loading: true
         }
     }
 
@@ -36,7 +37,7 @@ export default class UsersComponent extends Component {
     }
 
     render() {
-        const { user, isAdmin } = this.state;
+        const { user, isAdmin, loading } = this.state;
         if (user) {
             if (isAdmin) {
                 return (
@@ -54,7 +55,14 @@ export default class UsersComponent extends Component {
                                 <Divider />
                                 <Content>
                                     <div className="content-inner">
-                                        {/* Add users content component here */}
+                                        {loading ? (
+                                            <Placeholder.Grid rows={5} columns={6} active />
+                                        ) : (
+                                            <div>
+                                                <p>Content</p>
+                                                {/* Add users content component here */}
+                                            </div>
+                                        )}
                                     </div>
                                 </Content>
                                 <FooterComponent />

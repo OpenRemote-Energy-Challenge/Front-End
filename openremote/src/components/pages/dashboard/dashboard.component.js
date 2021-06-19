@@ -3,7 +3,7 @@ import { Redirect } from 'react-router-dom';
 
 // Components
 import SidebarComponent from "../../global/navigation/sidebar/sidebar.component";
-import {Button, Container, Content, Divider, Header} from "rsuite";
+import {Button, Container, Content, Divider, Header, Loader, Placeholder} from "rsuite";
 import FooterComponent from "../../global/footer/footer.component";
 
 export default class DashboardComponent extends Component {
@@ -16,7 +16,8 @@ export default class DashboardComponent extends Component {
                 id: "12121212",
                 isAdmin: true,
             },
-            isAdmin: false
+            isAdmin: false,
+            loading: true
         }
     }
 
@@ -35,7 +36,7 @@ export default class DashboardComponent extends Component {
     }
 
     render() {
-        const { user } = this.state;
+        const { user, loading } = this.state;
         if (user) {
             return (
                 <Container>
@@ -48,8 +49,17 @@ export default class DashboardComponent extends Component {
                         <Divider />
                         <Content>
                             <div className="content-inner">
-                                {/* Add dashboard content component here */}
-                                <Button appearance='primary'>Something</Button>
+                                {loading ? (
+                                    <Placeholder.Paragraph rows={18} active>
+                                        <Loader backdrop content="loading..." vertical />
+                                    </Placeholder.Paragraph>
+                                ) : (
+                                    <div>
+                                        <p>Replace me with content</p>
+                                        <Button appearance='primary'>Something</Button>
+                                        {/* Add dashboard content component here */}
+                                    </div>
+                                )}
                             </div>
                         </Content>
                         <FooterComponent />
