@@ -3,7 +3,6 @@ import { Switch, Route, BrowserRouter } from "react-router-dom";
 
 // CSS
 import './App.css';
-//import 'rsuite/dist/styles/rsuite-dark.css';
 import 'rsuite/lib/styles/themes/dark/index.less';
 
 // Components
