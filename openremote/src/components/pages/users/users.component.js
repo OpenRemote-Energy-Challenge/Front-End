@@ -5,6 +5,7 @@ import { Redirect } from 'react-router-dom';
 import SidebarComponent from "../../global/navigation/sidebar/sidebar.component";
 import {Container, Content, Divider, Header} from "rsuite";
 import FooterComponent from "../../global/footer/footer.component";
+import {Helmet} from "react-helmet";
 
 export default class UsersComponent extends Component {
     constructor(props) {
@@ -39,41 +40,51 @@ export default class UsersComponent extends Component {
         if (user) {
             if (isAdmin) {
                 return (
-                    <Container>
-                        <SidebarComponent activeKey="3" />
+                    <>
+                        <Helmet>
+                            <title>OpenRemote | Users</title>
+                        </Helmet>
+                        <Container>
+                            <SidebarComponent activeKey="3" />
 
-                        <Container className="container-content">
-                            <Header>
-                                <h2>Users</h2>
-                            </Header>
-                            <Divider />
-                            <Content>
-                                <div className="content-inner">
-                                    {/* Add users content component here */}
-                                </div>
-                            </Content>
-                            <FooterComponent />
+                            <Container className="container-content">
+                                <Header>
+                                    <h2>Users</h2>
+                                </Header>
+                                <Divider />
+                                <Content>
+                                    <div className="content-inner">
+                                        {/* Add users content component here */}
+                                    </div>
+                                </Content>
+                                <FooterComponent />
+                            </Container>
                         </Container>
-                    </Container>
+                    </>
                 )
             } else {
                 return (
-                    <Container>
-                        <SidebarComponent activeKey="3" />
+                    <>
+                        <Helmet>
+                            <title>OpenRemote | No Permission</title>
+                        </Helmet>
+                        <Container>
+                            <SidebarComponent activeKey="3" />
 
-                        <Container className="container-content">
-                            <Header>
-                                <h2>No Permission</h2>
-                            </Header>
-                            <Divider />
-                            <Content>
-                                <div className="content-inner">
-                                    <p>You don't have permission to view this page</p>
-                                </div>
-                            </Content>
-                            <FooterComponent />
+                            <Container className="container-content">
+                                <Header>
+                                    <h2>No Permission</h2>
+                                </Header>
+                                <Divider />
+                                <Content>
+                                    <div className="content-inner">
+                                        <p>You don't have permission to view this page</p>
+                                    </div>
+                                </Content>
+                                <FooterComponent />
+                            </Container>
                         </Container>
-                    </Container>
+                    </>
                 )
             }
         } else {

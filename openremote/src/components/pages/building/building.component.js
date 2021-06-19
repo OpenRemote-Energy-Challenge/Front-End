@@ -6,6 +6,7 @@ import SidebarComponent from "../../global/navigation/sidebar/sidebar.component"
 import {Container, Content, Divider, Header} from "rsuite";
 import FooterComponent from "../../global/footer/footer.component";
 import DataComponent from "./data/data.component";
+import {Helmet} from "react-helmet";
 
 export default class BuildingComponent extends Component {
     constructor(props) {
@@ -36,22 +37,28 @@ export default class BuildingComponent extends Component {
         const { user, building } = this.state;
         if (user) {
             return (
-                <Container>
-                    <SidebarComponent />
+                <>
+                    <Helmet>
+                        <title>OpenRemote | {building}</title>
+                    </Helmet>
+                    <Container>
+                        <SidebarComponent />
 
-                    <Container className="container-content">
-                        <Header>
-                            <h2>Building - {building}</h2>
-                        </Header>
-                        <Divider />
-                        <Content>
-                            <div className="content-inner">
-                                <DataComponent building={building} />
-                            </div>
-                        </Content>
-                        <FooterComponent />
+                        <Container className="container-content">
+                            <Header>
+                                <h2>Building - {building}</h2>
+                            </Header>
+                            <Divider />
+                            <Content>
+                                <div className="content-inner">
+                                    <DataComponent building={building} />
+                                </div>
+                            </Content>
+                            <FooterComponent />
+                        </Container>
                     </Container>
-                </Container>
+                </>
+
             )
         } else {
             return <Redirect to="/login" />

@@ -6,6 +6,7 @@ import SidebarComponent from "../../global/navigation/sidebar/sidebar.component"
 import {Container, Content, Divider, Header} from "rsuite";
 import FooterComponent from "../../global/footer/footer.component";
 import BuildingsComponent from "./blocks/buildings.component";
+import {Helmet} from "react-helmet";
 
 export default class AnalyticsComponent extends Component {
     constructor(props) {
@@ -39,22 +40,27 @@ export default class AnalyticsComponent extends Component {
         const { user } = this.state;
         if (user) {
             return (
-                <Container>
-                    <SidebarComponent activeKey="2" />
+                <>
+                    <Helmet>
+                        <title>OpenRemote | Analytics</title>
+                    </Helmet>
+                    <Container>
+                        <SidebarComponent activeKey="2" />
 
-                    <Container className="container-content">
-                        <Header>
-                            <h2>Analytics</h2>
-                        </Header>
-                        <Divider />
-                        <Content>
-                            <div className="content-inner">
-                                <BuildingsComponent />
-                            </div>
-                        </Content>
-                        <FooterComponent />
+                        <Container className="container-content">
+                            <Header>
+                                <h2>Analytics</h2>
+                            </Header>
+                            <Divider />
+                            <Content>
+                                <div className="content-inner">
+                                    <BuildingsComponent />
+                                </div>
+                            </Content>
+                            <FooterComponent />
+                        </Container>
                     </Container>
-                </Container>
+                </>
             )
         } else {
             return <Redirect to="login" />

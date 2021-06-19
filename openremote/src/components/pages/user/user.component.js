@@ -5,6 +5,7 @@ import { Redirect } from 'react-router-dom';
 import SidebarComponent from "../../global/navigation/sidebar/sidebar.component";
 import {Container, Content, Divider, Header} from "rsuite";
 import FooterComponent from "../../global/footer/footer.component";
+import {Helmet} from "react-helmet";
 //import ProfileComponent from "./profile/profile.component";
 
 export default class UserComponent extends Component {
@@ -35,22 +36,27 @@ export default class UserComponent extends Component {
         const { user } = this.state;
         if (user) {
             return (
-                <Container>
-                    <SidebarComponent activeKey="4-1" openKey="4" />
+                <>
+                    <Helmet>
+                        <title>OpenRemote | {user.username}</title>
+                    </Helmet>
+                    <Container>
+                        <SidebarComponent activeKey="4-1" openKey="4" />
 
-                    <Container className="container-content">
-                        <Header>
-                            <h2>Profile - {user.username}</h2>
-                        </Header>
-                        <Divider />
-                        <Content>
-                            <div className="content-inner">
-                                {/*<ProfileComponent username={user.username} />*/}
-                            </div>
-                        </Content>
-                        <FooterComponent />
+                        <Container className="container-content">
+                            <Header>
+                                <h2>Profile - {user.username}</h2>
+                            </Header>
+                            <Divider />
+                            <Content>
+                                <div className="content-inner">
+                                    {/*<ProfileComponent username={user.username} />*/}
+                                </div>
+                            </Content>
+                            <FooterComponent />
+                        </Container>
                     </Container>
-                </Container>
+                </>
             )
         } else {
             return <Redirect to="/login" />
