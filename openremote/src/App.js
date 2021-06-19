@@ -5,7 +5,6 @@ import { Switch, Route, BrowserRouter } from "react-router-dom";
 import './App.css';
 //import 'rsuite/dist/styles/rsuite-dark.css';
 import 'rsuite/lib/styles/themes/dark/index.less';
-import './styles/custom.less';
 
 // Components
 import DashboardComponent from "./components/pages/dashboard/dashboard.component";
@@ -15,7 +14,6 @@ import BuildingComponent from "./components/pages/building/building.component";
 import UserComponent from "./components/pages/user/user.component";
 import NotfoundComponent from "./components/pages/notfound/notfound.component";
 import LoginComponent from "./components/pages/login/login.component";
-
 
 class App extends Component {
     constructor(props) {
