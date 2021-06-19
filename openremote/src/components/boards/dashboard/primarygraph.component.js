@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {LineChart} from "@rsuite/charts";
+// import {LineChart} from "@rsuite/charts";
 
 const PrimaryGraphComponent = () => {
     const [ loading, setLoading ] = useState(true);

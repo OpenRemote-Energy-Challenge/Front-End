@@ -1,5 +1,11 @@
 import React, { Component } from "react";
 
+// Components
+import TestComponent from "./analytics/buildings/test.component";
+import TamarComponent from "./analytics/buildings/tamar.component";
+import HumberComponent from "./analytics/buildings/humber.component";
+import {Col, Divider, Grid, Row} from "rsuite";
+
 export default class AnalyticsComponent extends Component {
     constructor(props) {
         super(props);
@@ -27,7 +33,43 @@ export default class AnalyticsComponent extends Component {
     render() {
         return (
             <div>
-                <p>This is the analytics page</p>
+                <div>
+                    <h3>Test Building </h3>
+                    <Divider />
+                    <Row>
+                        <Col md={12}>
+                            <TestComponent />
+                        </Col>
+                        <Col md={12}>
+                            <TestComponent />
+                        </Col>
+                    </Row>
+                </div>
+                <div style={{marginTop: 20}}>
+                    <h3>Tamar Building </h3>
+                    <Divider />
+                    <Row>
+                        <Col md={12}>
+                            <TamarComponent />
+                        </Col>
+                        <Col md={12}>
+                            <TamarComponent />
+                        </Col>
+                    </Row>
+                </div>
+                <div style={{marginTop: 20}}>
+                    <h3>Humber Building </h3>
+                    <Divider />
+                    <Row>
+                        <Col md={12}>
+                            <HumberComponent />
+                        </Col>
+                        <Col md={12}>
+                            <HumberComponent />
+                        </Col>
+                    </Row>
+                </div>
+
             </div>
         )
     }

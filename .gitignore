@@ -21,3 +21,9 @@ openremote/.env.production.local
 openremote/npm-debug.log*
 openremote/yarn-debug.log*
 openremote/yarn-error.log*
+
+openremote/package-lock.json
+
+openremote/yarn.lock
+
+openremote/.idea/

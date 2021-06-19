@@ -42,21 +42,15 @@ export default class NavbarComponent extends Component {
         return (
                     <Sidenav.Body>
                         <Nav>
-                            <Link to="/home" >
-                                <Nav.Item eventKey="1" icon={<Icon icon="dashboard" to="/home" />} >
+                                <Nav.Item eventKey="1" icon={<Icon icon="dashboard" to="/home" />} href="/home" >
                                     Dashboard
                                 </Nav.Item>
-                            </Link>
-                            <Link to="/analytics" >
-                                <Nav.Item eventKey="2" icon={<Icon icon="line-chart" />} >
+                                <Nav.Item eventKey="2" icon={<Icon icon="line-chart" />} href="/analytics" >
                                     Analytics
                                 </Nav.Item>
-                            </Link>
-                            <Link to="/users" >
-                                <Nav.Item eventKey="3" icon={<Icon icon="group" />} >
+                                <Nav.Item eventKey="3" icon={<Icon icon="group" />} href="/users" >
                                     Users
                                 </Nav.Item>
-                            </Link>
 
                             {showAdminBoard ? (
                                 <Dropdown eventKey="4" title="Settings" icon={<Icon icon="gear-circle" />} >
