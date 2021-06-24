@@ -3,8 +3,9 @@ import { Redirect } from 'react-router-dom';
 
 // Components
 import SidebarComponent from "../../global/navigation/sidebar/sidebar.component";
-import {Button, Container, Content, Divider, Header, Loader, Placeholder} from "rsuite";
+import {Container, Content, Divider, Header, Loader, Placeholder} from "rsuite";
 import FooterComponent from "../../global/footer/footer.component";
+import WeatherComponent from "./weather/weather.component";
 
 export default class DashboardComponent extends Component {
     constructor(props) {
@@ -49,17 +50,9 @@ export default class DashboardComponent extends Component {
                         <Divider />
                         <Content>
                             <div className="content-inner">
-                                {loading ? (
-                                    <Placeholder.Paragraph rows={10} active>
-                                        <Loader backdrop content="loading..." vertical />
-                                    </Placeholder.Paragraph>
-                                ) : (
-                                    <div>
-                                        <p>Replace me with content</p>
-                                        <Button appearance='primary'>Something</Button>
-                                        {/* Add dashboard content component here */}
-                                    </div>
-                                )}
+                                <div>
+                                    <WeatherComponent />
+                                </div>
                             </div>
                         </Content>
                         <FooterComponent />

@@ -24,3 +24,11 @@
 .nav-toggle {
     margin-top: auto;
 }
+
+::selection {
+    background: #a3b421;
+}
+
+::-moz-selection {
+    background: #a3b421;
+}
