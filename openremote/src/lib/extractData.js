@@ -4,6 +4,9 @@ module.exports = {
     extractData: (array) => {
         return _.map(array, 'value');
     },
+    extractTimeStamp: (array) => {
+        return _.map(array, 'timestamp');
+    },
     extractBuildings: (array) => {
         return _.uniqBy(array, 'name');
     },
