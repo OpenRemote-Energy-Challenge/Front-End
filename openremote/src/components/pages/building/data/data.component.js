@@ -35,9 +35,9 @@ export default class DataComponent extends Component {
             <div>
                 <Row>
                     <Col md={12}>
-                        <h4>Summary Power Data</h4>
+                        <h4>Summary Solar Data</h4>
                         <Divider />
-                        <PowerGeneratedGraphComponent />
+                        <PowerGeneratedGraphComponent building={this.state.buildingName} />
                     </Col>
                 </Row>
                 <Row>

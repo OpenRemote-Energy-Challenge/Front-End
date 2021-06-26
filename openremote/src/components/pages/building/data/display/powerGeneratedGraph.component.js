@@ -8,8 +8,8 @@ export default class PowerGeneratedGraphComponent extends Component{
     constructor(props) {
         super(props);
 
-        let graphDataY = Lib.extractData(Lib.getSpecificBuilding(buildingSolar, 'Tamar building'));
-        let graphDataX = Lib.extractTimeStamp(Lib.getSpecificBuilding(buildingSolar, 'Tamar building'));
+        let graphDataY = Lib.extractData(Lib.getSpecificBuilding(buildingSolar, this.props.building.toString()));
+        let graphDataX = Lib.extractTimeStamp(Lib.getSpecificBuilding(buildingSolar, this.props.building.toString()));
 
         for(let i = 0; i < graphDataX.length; i++)
         {
@@ -21,7 +21,7 @@ export default class PowerGeneratedGraphComponent extends Component{
             options: {
                 title: {
                     text: 'Solar Energy Generated',
-                    subtext: 'Tamar Building',
+                    subtext: props.building.toString(),
                     left: 'center',
                     textStyle:{
                         fontsize: 20,
