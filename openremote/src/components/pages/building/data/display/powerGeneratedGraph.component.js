@@ -21,7 +21,7 @@ export default class PowerGeneratedGraphComponent extends Component{
             options: {
                 title: {
                     text: 'Solar Energy Generated',
-                    subtext: 'Tamar Building \n Scroll & drag to manipulate graph',
+                    subtext: 'Tamar Building',
                     left: 'center',
                     textStyle:{
                         fontsize: 20,
@@ -34,7 +34,14 @@ export default class PowerGeneratedGraphComponent extends Component{
                         fontStyle: 'italic'
                     }
                 },
-                //grid: { top: 8, right: 8, bottom: 24, left: 36 },
+                legend: {
+                    type: 'plain',
+                    show: true,
+                    align: 'auto',
+                    left: 'left',
+                    orient: 'vertical',
+                    color: 'rgb(255,255,255)'
+                },
                 xAxis: {
                     type: 'category',
                     data: graphDataX,
@@ -43,7 +50,7 @@ export default class PowerGeneratedGraphComponent extends Component{
                 dataZoom: [
                     {
                         id: 'dataZoomX',
-                        type: 'inside',
+                        type: 'slider',
                         xAxisIndex: [0],
                         filterMode: 'filter',
                     }],
@@ -62,6 +69,7 @@ export default class PowerGeneratedGraphComponent extends Component{
                 },
                 series: [
                     {
+                        name: 'Power(kW)',
                         data: graphDataY,
                         type: 'line',
                         smooth: true,
@@ -75,9 +83,6 @@ export default class PowerGeneratedGraphComponent extends Component{
                         }
                     }
                 ],
-                legend: {
-                  show: true,
-                },
                 tooltip: {
                     trigger: 'axis',
                 },
