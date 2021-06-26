@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
 import ReactECharts from 'echarts-for-react';
 
-import buildingSolar from '../../../../../data/solar.json';
+import buildingSolar from '../../../../../data/energy.json';
 import Lib from '../../../../../lib/extractData';
 
-export default class PowerGeneratedGraphComponent extends Component{
+export default class EnergyGeneratedGraphComponent extends Component{
     constructor(props) {
         super(props);
 
@@ -20,13 +20,12 @@ export default class PowerGeneratedGraphComponent extends Component{
         this.state = {
             options: {
                 title: {
-                    text: 'Solar Energy Generated',
+                    text: 'Predicted Energy Generated',
                     subtext: props.building.toString(),
                     left: 'center',
                     textStyle:{
                         fontsize: 20,
                         color: 'rgb(255,255,255, 0.5)',
-
                     },
                     subtextStyle:{
                         fontsize: 15,
@@ -69,7 +68,7 @@ export default class PowerGeneratedGraphComponent extends Component{
                 },
                 series: [
                     {
-                        name: 'Power(kW)',
+                        name: 'UV',
                         data: graphDataY,
                         type: 'line',
                         smooth: true,

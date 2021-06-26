@@ -9,7 +9,8 @@ import Lib from '../../../../lib/extractData';
 import SolarDataTableComponent from "./display/solarDataTable.component";
 import {Col, Divider, Row} from "rsuite";
 import EnergyDataTableComponent from "./display/energyDataTable.component";
-import PowerGeneratedGraphComponent from "./display/powerGeneratedGraph.component";
+import SolarGeneratedGraphComponent from "./display/solarGeneratedGraph.component";
+import EnergyGeneratedGraphComponent from "./display/energyGeneratedGraph.component";
 
 export default class DataComponent extends Component {
     constructor(props) {
@@ -37,10 +38,16 @@ export default class DataComponent extends Component {
                     <Col md={12}>
                         <h4>Summary Solar Data</h4>
                         <Divider />
-                        <PowerGeneratedGraphComponent building={this.state.buildingName} />
+                        <SolarGeneratedGraphComponent building={this.state.buildingName} />
+                    </Col>
+                    <Col md={12}>
+                        <h4>Summary Energy Data</h4>
+                        <Divider />
+                        <EnergyGeneratedGraphComponent building={this.state.buildingName} />
                     </Col>
                 </Row>
-                <Row>
+                <Divider><strong>Data Tables</strong></Divider>
+                <Row style={{marginTop: '15px'}}>
                     <Col md={12}>
                         <h4>Solar Data</h4>
                         <Divider />
