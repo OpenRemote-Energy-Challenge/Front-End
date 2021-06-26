@@ -46,9 +46,9 @@ export default class NavigationComponent extends Component {
                     <Nav.Item eventKey="2" icon={<Icon icon="line-chart" />} href="/analytics" >
                         Analytics
                     </Nav.Item>
-                    <Nav.Item eventKey="3" icon={<Icon icon="group" />} href="/users" >
-                        Users
-                    </Nav.Item>
+                    {/*<Nav.Item eventKey="3" icon={<Icon icon="group" />} href="/users" >*/}
+                    {/*    Users*/}
+                    {/*</Nav.Item>*/}
                     {user ? (
                         <Dropdown eventKey="4" title={user.username} icon={<Icon icon="avatar" />} >
                             <Dropdown.Item eventKey="4-1" href="/profile">Profile</Dropdown.Item>

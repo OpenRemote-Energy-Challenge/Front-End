@@ -7,6 +7,7 @@ import {Container, Content, Divider, Header, Placeholder} from "rsuite";
 import FooterComponent from "../../global/footer/footer.component";
 import {Helmet} from "react-helmet";
 import AuthService from "../../../services/user/authentication/auth.service";
+import ProfileComponent from "./profile/profile.component";
 
 export default class UserComponent extends Component {
     constructor(props) {
@@ -14,8 +15,7 @@ export default class UserComponent extends Component {
 
         this.state = {
             user: undefined,
-            isAdmin: false,
-            loading: true
+            isAdmin: false
         }
     }
 
@@ -32,7 +32,7 @@ export default class UserComponent extends Component {
     }
 
     render() {
-        const { user, loading } = this.state;
+        const { user } = this.state;
         if (user) {
             return (
                 <>
@@ -49,14 +49,10 @@ export default class UserComponent extends Component {
                             <Divider />
                             <Content>
                                 <div className="content-inner">
-                                    {loading ? (
-                                        <Placeholder.Graph active />
-                                    ) : (
-                                        <div>
-                                            <p>Content</p>
-                                            {/*<ProfileComponent username={user.username} />*/}
-                                        </div>
-                                    )}
+                                    <div>
+                                        <p>Content</p>
+                                        <ProfileComponent user={user} />
+                                    </div>
                                 </div>
                             </Content>
                             <FooterComponent />
