@@ -1,8 +1,20 @@
 import React, { Component } from "react";
-import {Button, ButtonToolbar, Col, FlexboxGrid, Form, FormGroup, Loader, Panel, Schema} from "rsuite";
-
-// Components
-import TextFieldComponent from "./textField.component";
+import {
+    Button,
+    ButtonToolbar,
+    Col,
+    FlexboxGrid,
+    Form,
+    FormGroup,
+    Loader,
+    Panel,
+    Schema,
+    Alert,
+    Notification,
+    FormControl, HelpBlock
+} from "rsuite";
+import AuthService from '../../../../services/user/authentication/auth.service';
+import md5 from 'md5';
 
 // Schema
 const { StringType } = Schema.Types;
@@ -10,6 +22,19 @@ const model = Schema.Model({
     username: StringType().isRequired('This field is required.'),
     password: StringType().isRequired('This field is required.')
 });
+
+class TextField extends React.PureComponent {
+    render() {
+        const { name, label, accepter, ...props } = this.props;
+        return (
+            <FormGroup>
+                {/*<ControlLabel>{label} </ControlLabel>*/}
+                <FormControl name={name} accepter={accepter} {...props} />
+                <HelpBlock>Required</HelpBlock>
+            </FormGroup>
+        );
+    }
+}
 
 export default class LoginFormComponent extends Component {
     constructor(props) {
@@ -39,7 +64,25 @@ export default class LoginFormComponent extends Component {
                 loading: true
             });
 
-            // Authenticate user here
+            AuthService.login(formValue.username, md5(formValue.password))
+                .then(() => {
+                    console.log('Authenticated!');
+                    this.props.history.push("/home");
+                    window.location.reload();
+                },
+                    error => {
+                        const resMessage =
+                            (error.response &&
+                                error.response.data &&
+                                error.response.data.message) ||
+                            error.message ||
+                            error.toString();
+
+                        this.setState({
+                            loading: false
+                        });
+                        Alert.error(resMessage);
+                    });
         }
     }
 
@@ -61,8 +104,8 @@ export default class LoginFormComponent extends Component {
                             formValue={formValue}
                             model={model}
                         >
-                            <TextFieldComponent name="username" placeholder="Username" />
-                            <TextFieldComponent name="password" placeholder="Password" type="password" />
+                            <TextField name="username" placeholder="Username" />
+                            <TextField name="password" placeholder="Password" type="password" />
                             <FormGroup>
                                 <ButtonToolbar>
                                     <Button appearance="primary" onClick={this.handleSubmit} disabled={this.state.loading}>

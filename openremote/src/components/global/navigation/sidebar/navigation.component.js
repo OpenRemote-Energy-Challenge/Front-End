@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Sidenav, Nav, Icon, Dropdown } from 'rsuite';
+import AuthService from "../../../../services/user/authentication/auth.service";
 
 export default class NavigationComponent extends Component {
     constructor(props) {
@@ -8,37 +9,34 @@ export default class NavigationComponent extends Component {
 
         this.state = {
             isAdmin: false,
-            currentUser: {
-                username: "Someone",
-                id: "12121212",
-                isAdmin: true,
-            },
+            user: undefined,
         };
     }
 
     componentDidMount() {
-        // Get the user account here
+        // Get user here
+        const user = AuthService.getCurrentUser();
 
-        // This is temporary and will be replaced with an API service later
-        this.setState({
-            currentUser: {
-                username: "Someone",
-                id: "12121212",
-                isAdmin: true,
-            },
-            showAdminBoard: true
-        });
+        if (user) {
+            this.setState({
+                user: user,
+                isAdmin: user.accessLevel === 3
+            })
+        }
     }
 
     logOut() {
         // Log the user out
-
-        // This is temporary and will be replaced with an API service later
-        console.log("Logged out..");
+        AuthService.logout();
+        console.log('Logged out...')
+        this.setState({
+            isAdmin: false,
+            user: undefined
+        });
     }
 
     render() {
-        const { currentUser } = this.state;
+        const { user } = this.state;
         return (
             <Sidenav.Body>
                 <Nav>
@@ -51,10 +49,10 @@ export default class NavigationComponent extends Component {
                     <Nav.Item eventKey="3" icon={<Icon icon="group" />} href="/users" >
                         Users
                     </Nav.Item>
-                    {currentUser ? (
-                        <Dropdown eventKey="4" title={currentUser.username} icon={<Icon icon="avatar" />} >
+                    {user ? (
+                        <Dropdown eventKey="4" title={user.username} icon={<Icon icon="avatar" />} >
                             <Dropdown.Item eventKey="4-1" href="/profile">Profile</Dropdown.Item>
-                            <Dropdown.Item eventKey="4-2">Log-out <Icon icon="exit" /></Dropdown.Item>
+                            <Dropdown.Item eventKey="4-2" onSelect={this.logOut}>Log-out <Icon icon="exit" /></Dropdown.Item>
                         </Dropdown>
                     ) : (
                         <Nav.Item eventKey="4" icon={<Icon icon="avatar" />} >

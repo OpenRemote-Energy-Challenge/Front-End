@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { Switch, Route, BrowserRouter } from "react-router-dom";
 
+// Data
+import AuthService from './services/user/authentication/auth.service';
+
 // CSS
 import './App.css';
 import 'rsuite/lib/styles/themes/dark/index.less';
@@ -19,27 +22,21 @@ class App extends Component {
         super(props);
 
         this.state = {
-            user: {
-                username: "Someone",
-                id: "12121212",
-                isAdmin: true,
-            },
+            user: undefined,
             isAdmin: false
         }
     }
 
     componentDidMount() {
         // Get user here
+        const user = AuthService.getCurrentUser();
 
-        // Temp
-        this.setState({
-            user: {
-                username: "Someone",
-                id: "12121212",
-                isAdmin: true,
-            },
-            isAdmin: true
-        });
+        if (user) {
+            this.setState({
+                user: user,
+                isAdmin: user.accessLevel === 3
+            })
+        }
     }
 
     render() {
