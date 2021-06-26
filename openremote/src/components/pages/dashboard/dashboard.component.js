@@ -6,7 +6,6 @@ import SidebarComponent from "../../global/navigation/sidebar/sidebar.component"
 import {Container, Content, Divider, Header, Loader, Placeholder} from "rsuite";
 import FooterComponent from "../../global/footer/footer.component";
 import WeatherComponent from "./weather/weather.component";
-import PowerGraph from "../building/data/display/powerGeneratedGraph.component"
 
 export default class DashboardComponent extends Component {
     constructor(props) {
