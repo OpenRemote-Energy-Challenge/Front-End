@@ -18,15 +18,7 @@ export default class DashboardComponent extends Component {
         this.open = this.open.bind(this);
 
         this.state = {
-            user: {
-                "userId": {
-                    "timestamp": 1623527396,
-                    "date": "2021-06-12T19:49:56.000+00:00"
-                },
-                "fullName": "admin",
-                "password": "21232f297a57a5a743894a0e4a801fc3",
-                "accessLevel": 3
-            },
+            user: undefined,
             isAdmin: false,
             loading: true,
             showDrawer: false,
@@ -38,12 +30,12 @@ export default class DashboardComponent extends Component {
         // Get user here
         const user = AuthService.getCurrentUser();
 
-        // if (user) {
-        //     this.setState({
-        //         user: user,
-        //         isAdmin: user.accessLevel === 3
-        //     })
-        // }
+        if (user) {
+            this.setState({
+                user: user,
+                isAdmin: user.accessLevel === 3
+            })
+        }
     }
 
     demoCloudy() {
