@@ -45,14 +45,17 @@ export default class SolarGeneratedGraphComponent extends Component{
                 xAxis: {
                     type: 'category',
                     data: graphDataX,
-                    label: 'Date'
+                    label: 'Date',
                 },
                 dataZoom: [
                     {
                         id: 'dataZoomX',
                         type: 'slider',
+                        realtime: false,
                         xAxisIndex: [0],
                         filterMode: 'filter',
+                        start: 1,
+                        end:7
                     }],
                 yAxis: {
                     type: 'value',
@@ -73,14 +76,14 @@ export default class SolarGeneratedGraphComponent extends Component{
                         data: graphDataY,
                         type: 'line',
                         smooth: true,
-                        color: 'rgb(255, 158, 68)',
+                        color: 'rgb(150, 60, 60)',
                         lineStyle: {
-                            width: 0
+                            width: 0,
                         },
                         showSymbol: false,
                         areaStyle: {
                             opacity: 0.6,
-                        }
+                        },
                     }
                 ],
                 tooltip: {

@@ -50,6 +50,7 @@ export default class EnergyGeneratedGraphComponent extends Component{
                     {
                         id: 'dataZoomX',
                         type: 'slider',
+                        realtime: false,
                         xAxisIndex: [0],
                         filterMode: 'filter',
                     }],
@@ -72,7 +73,7 @@ export default class EnergyGeneratedGraphComponent extends Component{
                         data: graphDataY,
                         type: 'line',
                         smooth: true,
-                        color: 'rgb(255, 158, 68)',
+                        color: 'rgb(34,139,34)',
                         lineStyle: {
                             width: 0
                         },
