@@ -3,42 +3,36 @@ import { Redirect } from 'react-router-dom';
 
 // Components
 import SidebarComponent from "../../global/navigation/sidebar/sidebar.component";
-import {Container, Content, Divider, Header, Loader, Placeholder} from "rsuite";
+import {Container, Content, Divider, Header} from "rsuite";
 import FooterComponent from "../../global/footer/footer.component";
 import BuildingsComponent from "./blocks/buildings.component";
 import {Helmet} from "react-helmet";
+import AuthService from "../../../services/user/authentication/auth.service";
 
 export default class AnalyticsComponent extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            user: {
-                username: "Someone",
-                id: "12121212",
-                isAdmin: true,
-            },
-            isAdmin: false,
-            loading: true
+            user: undefined,
+            isAdmin: false
         }
     }
 
     componentDidMount() {
-        // Get the user account here
+        // Get user here
+        const user = AuthService.getCurrentUser();
 
-        // This is temporary and will be replaced with an API service later
-        this.setState({
-            user: {
-                username: "Someone",
-                id: "12121212",
-                isAdmin: true,
-            },
-            isAdmin: true
-        });
+        if (user) {
+            this.setState({
+                user: user,
+                isAdmin: user.accessLevel === 3
+            })
+        }
     }
 
     render() {
-        const { user, loading } = this.state;
+        const { user } = this.state;
         if (user) {
             return (
                 <>
@@ -55,11 +49,7 @@ export default class AnalyticsComponent extends Component {
                             <Divider />
                             <Content>
                                 <div className="content-inner">
-                                    {loading ? (
-                                        <Placeholder.Graph active />
-                                    ) : (
-                                        <BuildingsComponent />
-                                    )}
+                                    <BuildingsComponent />
                                 </div>
                             </Content>
                             <FooterComponent />

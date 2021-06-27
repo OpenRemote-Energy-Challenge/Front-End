@@ -5,7 +5,7 @@ export default class ProfileComponent extends Component {
         super(props);
 
         this.state = {
-            user: props.username
+            user: props.user
         }
     }
 
@@ -17,7 +17,8 @@ export default class ProfileComponent extends Component {
         const { user } = this.state;
         return (
             <div>
-                <p><strong>Username:</strong> <span>{user.username}</span></p>
+                <p><strong>Username:</strong> <span>{user.fullName}</span></p>
+                <p><strong>Access Level:</strong> <span>{user.accessLevel}</span></p>
             </div>
         )
     }

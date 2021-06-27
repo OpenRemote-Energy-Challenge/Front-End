@@ -7,6 +7,7 @@ import {Container, Content, Divider, Header, Placeholder} from "rsuite";
 import FooterComponent from "../../global/footer/footer.component";
 import DataComponent from "./data/data.component";
 import {Helmet} from "react-helmet";
+import AuthService from "../../../services/user/authentication/auth.service";
 
 export default class BuildingComponent extends Component {
     constructor(props) {
@@ -16,26 +17,23 @@ export default class BuildingComponent extends Component {
             user: undefined,
             isAdmin: false,
             building: props.match.params.building,
-            loading: true
         }
     }
 
     componentDidMount() {
-        // Get the user account here
+        // Get user here
+        const user = AuthService.getCurrentUser();
 
-        // This is temporary and will be replaced with an API service later
-        this.setState({
-            user: {
-                username: "Someone",
-                id: "12121212",
-                isAdmin: true,
-            },
-            isAdmin: true
-        });
+        if (user) {
+            this.setState({
+                user: user,
+                isAdmin: user.accessLevel === 3
+            })
+        }
     }
 
     render() {
-        const { user, building, loading } = this.state;
+        const { user, building } = this.state;
         if (user) {
             return (
                 <>
@@ -52,11 +50,7 @@ export default class BuildingComponent extends Component {
                             <Divider />
                             <Content>
                                 <div className="content-inner">
-                                    {loading ? (
-                                        <Placeholder.Grid rows={5} columns={6} active />
-                                    ) : (
-                                        <DataComponent building={building} />
-                                    )}
+                                    <DataComponent building={building} />
                                 </div>
                             </Content>
                             <FooterComponent />

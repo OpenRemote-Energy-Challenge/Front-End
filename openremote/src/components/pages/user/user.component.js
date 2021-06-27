@@ -6,7 +6,8 @@ import SidebarComponent from "../../global/navigation/sidebar/sidebar.component"
 import {Container, Content, Divider, Header, Placeholder} from "rsuite";
 import FooterComponent from "../../global/footer/footer.component";
 import {Helmet} from "react-helmet";
-//import ProfileComponent from "./profile/profile.component";
+import AuthService from "../../../services/user/authentication/auth.service";
+import ProfileComponent from "./profile/profile.component";
 
 export default class UserComponent extends Component {
     constructor(props) {
@@ -14,27 +15,24 @@ export default class UserComponent extends Component {
 
         this.state = {
             user: undefined,
-            isAdmin: false,
-            loading: true
+            isAdmin: false
         }
     }
 
     componentDidMount() {
-        // Get the user account here
+        // Get user here
+        const user = AuthService.getCurrentUser();
 
-        // This is temporary and will be replaced with an API service later
-        this.setState({
-            user: {
-                username: "Someone",
-                id: "12121212",
-                isAdmin: true,
-            },
-            isAdmin: true
-        });
+        if (user) {
+            this.setState({
+                user: user,
+                isAdmin: user.accessLevel === 3
+            })
+        }
     }
 
     render() {
-        const { user, loading } = this.state;
+        const { user } = this.state;
         if (user) {
             return (
                 <>
@@ -51,14 +49,10 @@ export default class UserComponent extends Component {
                             <Divider />
                             <Content>
                                 <div className="content-inner">
-                                    {loading ? (
-                                        <Placeholder.Graph active />
-                                    ) : (
-                                        <div>
-                                            <p>Content</p>
-                                            {/*<ProfileComponent username={user.username} />*/}
-                                        </div>
-                                    )}
+                                    <div>
+                                        <p>Content</p>
+                                        <ProfileComponent user={user} />
+                                    </div>
                                 </div>
                             </Content>
                             <FooterComponent />

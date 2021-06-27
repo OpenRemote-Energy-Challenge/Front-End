@@ -5,28 +5,28 @@ import FooterComponent from "../../global/footer/footer.component";
 import TopBarComponent from "../../global/navigation/topbar/topbar.component";
 import {Helmet} from "react-helmet";
 import SidebarComponent from "../../global/navigation/sidebar/sidebar.component";
+import AuthService from "../../../services/user/authentication/auth.service";
 
 export default class NotfoundComponent extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            user: undefined
+            user: undefined,
+            isAdmin: false
         }
     }
 
     componentDidMount() {
-        // Get current user
+        // Get user here
+        const user = AuthService.getCurrentUser();
 
-        // Temp
-        this.setState({
-            user: {
-                username: "Someone",
-                id: "12121212",
-                isAdmin: true,
-            },
-            isAdmin: true
-        });
+        if (user) {
+            this.setState({
+                user: user,
+                isAdmin: user.accessLevel === 3
+            })
+        }
     }
 
     render() {

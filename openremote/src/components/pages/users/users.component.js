@@ -6,34 +6,29 @@ import SidebarComponent from "../../global/navigation/sidebar/sidebar.component"
 import {Container, Content, Divider, Header, Placeholder} from "rsuite";
 import FooterComponent from "../../global/footer/footer.component";
 import {Helmet} from "react-helmet";
+import AuthService from "../../../services/user/authentication/auth.service";
 
 export default class UsersComponent extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            user: {
-                username: "Someone",
-                id: "12121212",
-                isAdmin: true,
-            },
+            user: undefined,
             isAdmin: false,
             loading: true
         }
     }
 
     componentDidMount() {
-        // Get the user account here
+        // Get user here
+        const user = AuthService.getCurrentUser();
 
-        // This is temporary and will be replaced with an API service later
-        this.setState({
-            user: {
-                username: "Someone",
-                id: "12121212",
-                isAdmin: true,
-            },
-            isAdmin: true
-        });
+        if (user) {
+            this.setState({
+                user: user,
+                isAdmin: user.accessLevel === 3
+            })
+        }
     }
 
     render() {
