@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Sidenav, Nav, Icon, Dropdown } from 'rsuite';
+import { useHistory } from 'react-router-dom';
 import AuthService from "../../../../services/user/authentication/auth.service";
 
 export default class NavigationComponent extends Component {
@@ -25,10 +26,9 @@ export default class NavigationComponent extends Component {
         }
     }
 
-    logOut() {
+    logOut = () => {
         // Log the user out
         AuthService.logout();
-        this.props.history.push('/login');
         this.setState({
             isAdmin: false,
             user: undefined
