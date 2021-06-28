@@ -28,7 +28,7 @@ export default class NavigationComponent extends Component {
     logOut() {
         // Log the user out
         AuthService.logout();
-        console.log('Logged out...')
+        this.props.history.push('/login');
         this.setState({
             isAdmin: false,
             user: undefined
