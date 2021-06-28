@@ -19,7 +19,7 @@ export default class UserComponent extends Component {
         }
     }
 
-    componentDidMount() {
+    componentWillMount() {
         // Get user here
         const user = AuthService.getCurrentUser();
 
