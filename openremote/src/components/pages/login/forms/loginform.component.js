@@ -15,6 +15,7 @@ import {
 } from "rsuite";
 import AuthService from '../../../../services/user/authentication/auth.service';
 import md5 from 'md5';
+import {Redirect} from "react-router-dom";
 
 // Schema
 const { StringType } = Schema.Types;
@@ -45,7 +46,8 @@ export default class LoginFormComponent extends Component {
             checkTrigger: 'change',
             formValue: {},
             formError: {},
-            loading: false
+            loading: false,
+            authenticated: false
         };
     }
 
@@ -67,8 +69,9 @@ export default class LoginFormComponent extends Component {
             AuthService.login(formValue.username, md5(formValue.password))
                 .then(() => {
                     console.log('Authenticated!');
-                    this.props.history.push("/home");
-                    window.location.reload();
+                    this.setState({
+                        authenticated: true
+                    });
                 },
                     error => {
                         const resMessage =
@@ -87,40 +90,44 @@ export default class LoginFormComponent extends Component {
     }
 
     render() {
-        const { formValue } = this.state;
-        return (
-            <FlexboxGrid justify="center">
-                <FlexboxGrid.Item componentClass={Col} colspan={24} sm={18} md={12} lg={8}>
-                    <Panel header={<h3>Login</h3>} bordered>
-                        <Form
-                            fluid
-                            ref={ref => (this.form = ref)}
-                            onChange={formValue => {
-                                this.setState({ formValue });
-                            }}
-                            onCheck={formError => {
-                                this.setState({ formError });
-                            }}
-                            formValue={formValue}
-                            model={model}
-                        >
-                            <TextField name="username" placeholder="Username" />
-                            <TextField name="password" placeholder="Password" type="password" />
-                            <FormGroup>
-                                <ButtonToolbar>
-                                    <Button appearance="primary" onClick={this.handleSubmit} disabled={this.state.loading}>
-                                        {this.state.loading ? (
-                                            <Loader content="Logging in..." />
-                                        ) : (
-                                            <span>Log in</span>
-                                        )}
-                                    </Button>
-                                </ButtonToolbar>
-                            </FormGroup>
-                        </Form>
-                    </Panel>
-                </FlexboxGrid.Item>
-            </FlexboxGrid>
-        )
+        const { formValue, authenticated } = this.state;
+        if (authenticated) {
+            return <Redirect to="/" />
+        } else {
+            return (
+                <FlexboxGrid justify="center">
+                    <FlexboxGrid.Item componentClass={Col} colspan={24} sm={18} md={12} lg={8}>
+                        <Panel header={<h3>Login</h3>} bordered>
+                            <Form
+                                fluid
+                                ref={ref => (this.form = ref)}
+                                onChange={formValue => {
+                                    this.setState({ formValue });
+                                }}
+                                onCheck={formError => {
+                                    this.setState({ formError });
+                                }}
+                                formValue={formValue}
+                                model={model}
+                            >
+                                <TextField name="username" placeholder="Username" />
+                                <TextField name="password" placeholder="Password" type="password" />
+                                <FormGroup>
+                                    <ButtonToolbar>
+                                        <Button appearance="primary" onClick={this.handleSubmit} disabled={this.state.loading}>
+                                            {this.state.loading ? (
+                                                <Loader content="Logging in..." />
+                                            ) : (
+                                                <span>Log in</span>
+                                            )}
+                                        </Button>
+                                    </ButtonToolbar>
+                                </FormGroup>
+                            </Form>
+                        </Panel>
+                    </FlexboxGrid.Item>
+                </FlexboxGrid>
+            )
+        }
     }
 }
