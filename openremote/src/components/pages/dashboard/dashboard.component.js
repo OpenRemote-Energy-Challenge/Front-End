@@ -31,6 +31,7 @@ export default class DashboardComponent extends Component {
     componentDidMount() {
         // Get user here
         const user = AuthService.getCurrentUser();
+        console.log(user);
 
         if (user) {
             this.setState({
@@ -152,124 +153,120 @@ export default class DashboardComponent extends Component {
     }
 
     render() {
-        const { user, showDrawer, drawerEvent } = this.state;
-        if (user) {
-            return (
-                <Container>
-                    <Drawer
-                        show={showDrawer}
-                        onHide={this.close}
-                    >
-                        <Drawer.Header>
-                            {drawerEvent === 'power' ? (
-                                <Drawer.Title>Low Power</Drawer.Title>
-                            ) : drawerEvent === 'battery' ? (
-                                <Drawer.Title>Low Battery</Drawer.Title>
-                                ) : drawerEvent === 'cloudy' ? (
-                                <Drawer.Title>Cloudy Weather</Drawer.Title>
-                            ) : (
-                                <Drawer.Title>More Info</Drawer.Title>
-                            )}
-                        </Drawer.Header>
-                        <Drawer.Body>
-                            {drawerEvent === 'power' ? (
-                                <div>
-                                    <h3>Save Power <Icon icon='plug' /></h3>
-                                    <h4>Things that can be done to reduce power usage:</h4>
-                                    <ul>
-                                        <li>Turn off unnecessary lights</li>
-                                        <li>Take shorter showers</li>
-                                        <li>Unplug unused electronics</li>
-                                        <li>Replace old globes with LEDs</li>
-                                        <li>Wash laundry in cold</li>
-                                    </ul>
-                                    <h4>Items that use a lot of power:</h4>
-                                    <ul>
-                                        <li>Computer</li>
-                                        <li>Washer & Dryer</li>
-                                        <li>Water Heater</li>
-                                        <li>Cooling items (aircons)</li>
-                                        <li>Electric Ovens</li>
-                                        <li>Microwaves and other heating items</li>
-                                    </ul>
-                                    <div style={{marginTop: '25px'}}>
-                                        <Button href="/analytics" appearance="primary">View Analytics</Button>
-                                    </div>
+        const { showDrawer, drawerEvent } = this.state;
+        return (
+            <Container>
+                <Drawer
+                    show={showDrawer}
+                    onHide={this.close}
+                >
+                    <Drawer.Header>
+                        {drawerEvent === 'power' ? (
+                            <Drawer.Title>Low Power</Drawer.Title>
+                        ) : drawerEvent === 'battery' ? (
+                            <Drawer.Title>Low Battery</Drawer.Title>
+                        ) : drawerEvent === 'cloudy' ? (
+                            <Drawer.Title>Cloudy Weather</Drawer.Title>
+                        ) : (
+                            <Drawer.Title>More Info</Drawer.Title>
+                        )}
+                    </Drawer.Header>
+                    <Drawer.Body>
+                        {drawerEvent === 'power' ? (
+                            <div>
+                                <h3>Save Power <Icon icon='plug' /></h3>
+                                <h4>Things that can be done to reduce power usage:</h4>
+                                <ul>
+                                    <li>Turn off unnecessary lights</li>
+                                    <li>Take shorter showers</li>
+                                    <li>Unplug unused electronics</li>
+                                    <li>Replace old globes with LEDs</li>
+                                    <li>Wash laundry in cold</li>
+                                </ul>
+                                <h4>Items that use a lot of power:</h4>
+                                <ul>
+                                    <li>Computer</li>
+                                    <li>Washer & Dryer</li>
+                                    <li>Water Heater</li>
+                                    <li>Cooling items (aircons)</li>
+                                    <li>Electric Ovens</li>
+                                    <li>Microwaves and other heating items</li>
+                                </ul>
+                                <div style={{marginTop: '25px'}}>
+                                    <Button href="/analytics" appearance="primary">View Analytics</Button>
                                 </div>
-                            ) : drawerEvent === 'battery' ? (
-                                <div>
-                                    <h3>Low Battery Power <Icon icon='battery-1' /></h3>
-                                    <h4>Potential Causes: </h4>
-                                    <ul>
-                                        <li>Cloudy Weather</li>
-                                        <li>High Energy Usage</li>
-                                        <li>Faulty Solar Panels</li>
-                                        <li>Faulty Battery Modules</li>
-                                    </ul>
-                                    <h4>Things that can improve battery power:</h4>
-                                    <ul>
-                                        <li>Charge from the grid</li>
-                                        <li>Clean Solar Panels</li>
-                                        <li>Replace Faulty Batteries</li>
-                                        <li>Reduce Power usage</li>
-                                        <li>Set charge and discharge limits</li>
-                                    </ul>
-                                    <div style={{marginTop: '25px'}}>
-                                        <Button href="/analytics" appearance="primary">View Analytics</Button>
-                                    </div>
-                                </div>
-                            ) : drawerEvent === 'cloudy' ? (
-                                <div>
-                                    <h3>Cloudy / Rainy Weather <Icon icon='cloud' /></h3>
-                                    <h4>Effects of cloudy weather on solar: </h4>
-                                    <ul>
-                                        <li>UV is reduced causing less energy to be produced</li>
-                                        <li>Grid reliance increases</li>
-                                        <li>Batteries charge slower</li>
-                                        <li>Energy generation is reduced</li>
-                                    </ul>
-                                    <div style={{marginTop: '25px'}}>
-                                        <Button href="/analytics" appearance="primary">View Analytics</Button>
-                                    </div>
-                                </div>
-                            ) : (
-                                <div>
-                                    <p>Use power more sparingly to reserve battery energy and improve longevity</p>
-                                </div>
-                            )}
-                        </Drawer.Body>
-                        <Drawer.Footer>
-                            <div style={{marginBottom: '30px'}}>
-                                <Button onClick={this.close} appearance="primary">Confirm</Button>
-                                <Button onClick={this.close} appearance="subtle">Cancel</Button>
                             </div>
-                        </Drawer.Footer>
-                    </Drawer>
-                    <SidebarComponent activeKey="1" />
+                        ) : drawerEvent === 'battery' ? (
+                            <div>
+                                <h3>Low Battery Power <Icon icon='battery-1' /></h3>
+                                <h4>Potential Causes: </h4>
+                                <ul>
+                                    <li>Cloudy Weather</li>
+                                    <li>High Energy Usage</li>
+                                    <li>Faulty Solar Panels</li>
+                                    <li>Faulty Battery Modules</li>
+                                </ul>
+                                <h4>Things that can improve battery power:</h4>
+                                <ul>
+                                    <li>Charge from the grid</li>
+                                    <li>Clean Solar Panels</li>
+                                    <li>Replace Faulty Batteries</li>
+                                    <li>Reduce Power usage</li>
+                                    <li>Set charge and discharge limits</li>
+                                </ul>
+                                <div style={{marginTop: '25px'}}>
+                                    <Button href="/analytics" appearance="primary">View Analytics</Button>
+                                </div>
+                            </div>
+                        ) : drawerEvent === 'cloudy' ? (
+                            <div>
+                                <h3>Cloudy / Rainy Weather <Icon icon='cloud' /></h3>
+                                <h4>Effects of cloudy weather on solar: </h4>
+                                <ul>
+                                    <li>UV is reduced causing less energy to be produced</li>
+                                    <li>Grid reliance increases</li>
+                                    <li>Batteries charge slower</li>
+                                    <li>Energy generation is reduced</li>
+                                </ul>
+                                <div style={{marginTop: '25px'}}>
+                                    <Button href="/analytics" appearance="primary">View Analytics</Button>
+                                </div>
+                            </div>
+                        ) : (
+                            <div>
+                                <p>Use power more sparingly to reserve battery energy and improve longevity</p>
+                            </div>
+                        )}
+                    </Drawer.Body>
+                    <Drawer.Footer>
+                        <div style={{marginBottom: '30px'}}>
+                            <Button onClick={this.close} appearance="primary">Confirm</Button>
+                            <Button onClick={this.close} appearance="subtle">Cancel</Button>
+                        </div>
+                    </Drawer.Footer>
+                </Drawer>
+                <SidebarComponent activeKey="1" />
 
-                    <Container className="container-content">
-                        <Header>
-                            <h2>Dashboard</h2>
-                        </Header>
-                        <Divider />
-                        <Content>
-                            <div className="content-inner">
-                                <div>
-                                    <WeatherComponent />
-                                    <ButtonToolbar>
-                                        <Button onClick={this.demoPowerSave}>Low Battery Warning Simulate</Button>
-                                        <Button onClick={this.demoOutage}>Lower Power Warning Simulate</Button>
-                                        <Button onClick={this.demoCloudy}>Cloudy Weather Warning Simulate</Button>
-                                    </ButtonToolbar>
-                                </div>
+                <Container className="container-content">
+                    <Header>
+                        <h2>Dashboard</h2>
+                    </Header>
+                    <Divider />
+                    <Content>
+                        <div className="content-inner">
+                            <div>
+                                <WeatherComponent />
+                                <ButtonToolbar>
+                                    <Button onClick={this.demoPowerSave}>Low Battery Warning Simulate</Button>
+                                    <Button onClick={this.demoOutage}>Lower Power Warning Simulate</Button>
+                                    <Button onClick={this.demoCloudy}>Cloudy Weather Warning Simulate</Button>
+                                </ButtonToolbar>
                             </div>
-                        </Content>
-                        <FooterComponent />
-                    </Container>
+                        </div>
+                    </Content>
+                    <FooterComponent />
                 </Container>
-            )
-        } else {
-            return <Redirect to="/login" />
-        }
+            </Container>
+        )
     }
 }

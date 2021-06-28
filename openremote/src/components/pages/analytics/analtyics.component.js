@@ -32,33 +32,28 @@ export default class AnalyticsComponent extends Component {
     }
 
     render() {
-        const { user } = this.state;
-        if (user) {
-            return (
-                <>
-                    <Helmet>
-                        <title>OpenRemote | Analytics</title>
-                    </Helmet>
-                    <Container>
-                        <SidebarComponent activeKey="2" />
+        return (
+            <>
+                <Helmet>
+                    <title>OpenRemote | Analytics</title>
+                </Helmet>
+                <Container>
+                    <SidebarComponent activeKey="2" />
 
-                        <Container className="container-content">
-                            <Header>
-                                <h2>Analytics</h2>
-                            </Header>
-                            <Divider />
-                            <Content>
-                                <div className="content-inner">
-                                    <BuildingsComponent />
-                                </div>
-                            </Content>
-                            <FooterComponent />
-                        </Container>
+                    <Container className="container-content">
+                        <Header>
+                            <h2>Analytics</h2>
+                        </Header>
+                        <Divider />
+                        <Content>
+                            <div className="content-inner">
+                                <BuildingsComponent />
+                            </div>
+                        </Content>
+                        <FooterComponent />
                     </Container>
-                </>
-            )
-        } else {
-            return <Redirect to="login" />
-        }
+                </Container>
+            </>
+        )
     }
 }

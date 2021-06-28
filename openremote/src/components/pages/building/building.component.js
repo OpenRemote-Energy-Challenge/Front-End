@@ -33,34 +33,30 @@ export default class BuildingComponent extends Component {
     }
 
     render() {
-        const { user, building } = this.state;
-        if (user) {
-            return (
-                <>
-                    <Helmet>
-                        <title>OpenRemote | {building}</title>
-                    </Helmet>
-                    <Container>
-                        <SidebarComponent />
+        const { building } = this.state;
+        return (
+            <>
+                <Helmet>
+                    <title>OpenRemote | {building}</title>
+                </Helmet>
+                <Container>
+                    <SidebarComponent />
 
-                        <Container className="container-content">
-                            <Header>
-                                <h2>Building - {building}</h2>
-                            </Header>
-                            <Divider />
-                            <Content>
-                                <div className="content-inner">
-                                    <DataComponent building={building} />
-                                </div>
-                            </Content>
-                            <FooterComponent />
-                        </Container>
+                    <Container className="container-content">
+                        <Header>
+                            <h2>Building - {building}</h2>
+                        </Header>
+                        <Divider />
+                        <Content>
+                            <div className="content-inner">
+                                <DataComponent building={building} />
+                            </div>
+                        </Content>
+                        <FooterComponent />
                     </Container>
-                </>
+                </Container>
+            </>
 
-            )
-        } else {
-            return <Redirect to="/login" />
-        }
+        )
     }
 }
