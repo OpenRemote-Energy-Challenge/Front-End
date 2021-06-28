@@ -17,8 +17,10 @@ export default class DashboardComponent extends Component {
         this.close = this.close.bind(this);
         this.open = this.open.bind(this);
 
+        const user = AuthService.getCurrentUser();
+
         this.state = {
-            user: undefined,
+            user: user,
             isAdmin: false,
             loading: true,
             showDrawer: false,

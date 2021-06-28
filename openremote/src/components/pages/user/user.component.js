@@ -37,14 +37,14 @@ export default class UserComponent extends Component {
             return (
                 <>
                     <Helmet>
-                        <title>OpenRemote | {user.username}</title>
+                        <title>OpenRemote | {user.fullName}</title>
                     </Helmet>
                     <Container>
                         <SidebarComponent activeKey="4-1" openKey="4" />
 
                         <Container className="container-content">
                             <Header>
-                                <h2>Profile - {user.username}</h2>
+                                <h2>Profile - {user.fullName}</h2>
                             </Header>
                             <Divider />
                             <Content>

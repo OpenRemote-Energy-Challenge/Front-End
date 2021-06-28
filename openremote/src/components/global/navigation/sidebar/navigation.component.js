@@ -50,7 +50,7 @@ export default class NavigationComponent extends Component {
                     {/*    Users*/}
                     {/*</Nav.Item>*/}
                     {user ? (
-                        <Dropdown eventKey="4" title={user.username} icon={<Icon icon="avatar" />} >
+                        <Dropdown eventKey="4" title={user.fullName} icon={<Icon icon="avatar" />} >
                             <Dropdown.Item eventKey="4-1" href="/profile">Profile</Dropdown.Item>
                             <Dropdown.Item eventKey="4-2" onSelect={this.logOut}>Log-out <Icon icon="exit" /></Dropdown.Item>
                         </Dropdown>

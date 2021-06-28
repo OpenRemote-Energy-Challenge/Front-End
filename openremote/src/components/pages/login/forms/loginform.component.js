@@ -69,6 +69,7 @@ export default class LoginFormComponent extends Component {
             AuthService.login(formValue.username, md5(formValue.password))
                 .then(() => {
                     console.log('Authenticated!');
+                    window.location.reload();
                     this.setState({
                         authenticated: true
                     });
